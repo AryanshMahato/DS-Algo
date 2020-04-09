@@ -1,3 +1,16 @@
+const groupData = (data, groupBy, toBeGrouped) => {
+  let dataGroup = {};
+
+  data.forEach(data => (dataGroup = { ...dataGroup, [data[groupBy]]: [] }));
+
+  data.forEach(data => {
+    dataGroup[data[groupBy]] = [...dataGroup[data[groupBy]], data[toBeGrouped]];
+  });
+
+  return dataGroup;
+};
+
+// EXAMPLE
 const datum = [
   { alias: "Admin", name: "Aryansh" },
   { alias: "Admin", name: "Nikita" },
@@ -9,12 +22,13 @@ const datum = [
   { alias: "Customer", name: "Dhiraj" }
 ];
 
-let dataGroup = {};
+groupData(datum, "alias", "name");
 
-datum.forEach(data => (dataGroup = { ...dataGroup, [data.alias]: [] }));
-
-datum.forEach(data => {
-  dataGroup[data.alias] = [...dataGroup[data.alias], data.name];
-});
-
-console.log(dataGroup);
+/*
+  RETURNS:
+    {
+      Admin: [ 'Aryansh', 'Nikita' ],
+      Employee: [ 'Sourav', 'Asit', 'Anjali' ],
+      Customer: [ 'Aniket', 'Pradyum', 'Dhiraj' ]
+    }
+*/
