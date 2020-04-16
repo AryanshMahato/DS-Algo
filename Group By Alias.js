@@ -57,7 +57,15 @@ for (const alias in aliases) {
   ];
 }
 
-console.log(groupedData);
+
+
+// Take the look from here
+
+const ids=['jdflkasj','jlkafsd', 'owijesa']
+
+groupedData.forEach(group => {
+  // group.subpart.id = ids[/*Which id we will select here?*/ ]
+});
 
 //
 // let groupedArray = [];
